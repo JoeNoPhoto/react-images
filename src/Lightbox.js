@@ -80,10 +80,13 @@ class Lightbox extends Component {
 
 	preloadImage (idx) {
 		const image = this.props.images[idx];
+    const video = document.createElement('video');
+    video.setAttribute('src', 'nameOfFile.ogg');
+
 
 		if (!image) return;
 
-		const img = new Image();
+		const img = (image.video ? video : new Image());
 
 		img.src = image.src;
 		img.srcset = img.srcSet || img.srcset;
@@ -234,18 +237,37 @@ class Lightbox extends Component {
 					https://fb.me/react-unknown-prop is resolved
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
 				*/}
-				<img
-					className={css(classes.image)}
-					onClick={!!onClickImage && onClickImage}
-					sizes={sizes}
-					alt={image.alt}
-					src={image.src}
-					srcSet={srcset}
-					style={{
-						cursor: this.props.onClickImage ? 'pointer' : 'auto',
-						maxHeight: `calc(100vh - ${heightOffset})`,
-					}}
-				/>
+        {
+          !image.video &&
+          <img
+            className={css(classes.image)}
+            onClick={!!onClickImage && onClickImage}
+            sizes={sizes}
+            alt={image.alt}
+            src={image.src}
+            srcSet={srcset}
+            style={{
+              cursor: this.props.onClickImage ? 'pointer' : 'auto',
+        maxHeight: `calc(100vh - ${heightOffset})`,
+            }}
+          />}
+        {
+          image.video &&
+          <video
+            className={css(classes.image)}
+            onClick={!!onClickImage && onClickImage}
+            sizes={sizes}
+            alt={image.alt}
+            src={image.src}
+            srcSet={srcset}
+            style={{
+              cursor: this.props.onClickImage ? 'pointer' : 'auto',
+        maxHeight: `calc(100vh - ${heightOffset})`,
+            }}
+            type="video/webm"
+            autoPlay
+            loop
+          />}
 				<Footer
 					caption={images[currentImage].caption}
 					countCurrent={currentImage + 1}
@@ -292,6 +314,7 @@ Lightbox.propTypes = {
 			srcset: PropTypes.array,
 			caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 			thumbnail: PropTypes.string,
+      video: PropTypes.bool,
 		})
 	).isRequired,
 	isOpen: PropTypes.bool,
@@ -307,6 +330,7 @@ Lightbox.propTypes = {
 	showThumbnails: PropTypes.bool,
 	theme: PropTypes.object,
 	thumbnailOffset: PropTypes.number,
+  video: PropTypes.bool,
 	width: PropTypes.number,
 };
 Lightbox.defaultProps = {
