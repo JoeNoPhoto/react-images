@@ -2,7 +2,9 @@
 // THEME
 // ==============================
 
-const theme = {};
+const theme = {
+	color: '#ffe11f',
+};
 
 // container
 theme.container = {
@@ -24,10 +26,12 @@ theme.close = {
 
 // footer
 theme.footer = {
-	color: 'white',
+	fontFamily: 'Impact, Charcoal, sans-serif',
+	color: '#ffe11f',
+	fontSize: '2rem',
 	count: {
-		color: 'rgba(255, 255, 255, 0.75)',
-		fontSize: '0.85em',
+		color: 'rgba(255, 255, 31, 0.50)',
+		fontSize: '.85em',
 	},
 	height: 40,
 	gutter: {
@@ -45,9 +49,9 @@ theme.thumbnail = {
 
 // arrow
 theme.arrow = {
-	background: 'black',
-	fill: 'white',
-	height: 120,
+	background: 'rgba(0,0,0,.5)',
+	fill: '#ffe11f',
+	height: 60,
 };
 
 

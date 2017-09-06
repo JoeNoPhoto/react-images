@@ -80,8 +80,8 @@ class Lightbox extends Component {
 
 	preloadImage (idx) {
 		const image = this.props.images[idx];
-    const video = document.createElement('video');
-    video.setAttribute('src', 'nameOfFile.ogg');
+    																				const video = document.createElement('video');
+    // video.setAttribute('src', 'nameOfFile.webm');
 
 
 		if (!image) return;
@@ -240,33 +240,33 @@ class Lightbox extends Component {
         {
           !image.video &&
           <img
-            className={css(classes.image)}
-            onClick={!!onClickImage && onClickImage}
-            sizes={sizes}
-            alt={image.alt}
-            src={image.src}
-            srcSet={srcset}
-            style={{
-              cursor: this.props.onClickImage ? 'pointer' : 'auto',
-        maxHeight: `calc(100vh - ${heightOffset})`,
-            }}
+	className={css(classes.image)}
+	onClick={!!onClickImage && onClickImage}
+	sizes={sizes}
+	alt={image.alt}
+	src={image.src}
+	srcSet={srcset}
+	style={{
+              																																																											cursor: this.props.onClickImage ? 'pointer' : 'auto',
+        																																																											maxHeight: `calc(100vh - ${heightOffset})`,
+            																													}}
           />}
         {
           image.video &&
           <video
-            className={css(classes.image)}
-            onClick={!!onClickImage && onClickImage}
-            sizes={sizes}
-            alt={image.alt}
-            src={image.src}
-            srcSet={srcset}
-            style={{
-              cursor: this.props.onClickImage ? 'pointer' : 'auto',
-        maxHeight: `calc(100vh - ${heightOffset})`,
-            }}
-            type="video/webm"
-            autoPlay
-            loop
+	className={css(classes.image)}
+	onClick={!!onClickImage && onClickImage}
+	sizes={sizes}
+	alt={image.alt}
+	src={image.src}
+	srcSet={srcset}
+	style={{
+              																																																											cursor: this.props.onClickImage ? 'pointer' : 'auto',
+        																																																											maxHeight: `calc(100vh - ${heightOffset})`,
+            																													}}
+	type="video/webm"
+	autoPlay
+	loop
           />}
 				<Footer
 					caption={images[currentImage].caption}
@@ -314,7 +314,7 @@ Lightbox.propTypes = {
 			srcset: PropTypes.array,
 			caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 			thumbnail: PropTypes.string,
-      video: PropTypes.bool,
+      																																																																																										video: PropTypes.bool,
 		})
 	).isRequired,
 	isOpen: PropTypes.bool,
@@ -330,7 +330,7 @@ Lightbox.propTypes = {
 	showThumbnails: PropTypes.bool,
 	theme: PropTypes.object,
 	thumbnailOffset: PropTypes.number,
-  video: PropTypes.bool,
+  																														video: PropTypes.bool,
 	width: PropTypes.number,
 };
 Lightbox.defaultProps = {
