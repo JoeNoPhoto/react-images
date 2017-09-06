@@ -2730,9 +2730,7 @@ var Lightbox = (function (_Component) {
 	_createClass(Lightbox, [{
 		key: 'getChildContext',
 		value: function getChildContext() {
-			return {
-				theme: this.theme
-			};
+			return { theme: this.theme };
 		}
 	}, {
 		key: 'componentDidMount',
@@ -2862,26 +2860,14 @@ var Lightbox = (function (_Component) {
 		value: function renderArrowPrev() {
 			if (this.props.currentImage === 0) return null;
 
-			return _react2['default'].createElement(_componentsArrow2['default'], {
-				direction: 'left',
-				icon: 'arrowLeft',
-				onClick: this.gotoPrev,
-				title: this.props.leftArrowTitle,
-				type: 'button'
-			});
+			return _react2['default'].createElement(_componentsArrow2['default'], { direction: 'left', icon: 'arrowLeft', onClick: this.gotoPrev, title: this.props.leftArrowTitle, type: 'button' });
 		}
 	}, {
 		key: 'renderArrowNext',
 		value: function renderArrowNext() {
 			if (this.props.currentImage === this.props.images.length - 1) return null;
 
-			return _react2['default'].createElement(_componentsArrow2['default'], {
-				direction: 'right',
-				icon: 'arrowRight',
-				onClick: this.gotoNext,
-				title: this.props.rightArrowTitle,
-				type: 'button'
-			});
+			return _react2['default'].createElement(_componentsArrow2['default'], { direction: 'right', icon: 'arrowRight', onClick: this.gotoNext, title: this.props.rightArrowTitle, type: 'button' });
 		}
 	}, {
 		key: 'renderDialog',
@@ -2904,20 +2890,15 @@ var Lightbox = (function (_Component) {
 
 			return _react2['default'].createElement(
 				_componentsContainer2['default'],
-				{
-					key: 'open',
-					onClick: !!backdropClosesModal && this.closeBackdrop,
-					onTouchEnd: !!backdropClosesModal && this.closeBackdrop
-				},
+				{ key: 'open', onClick: !!backdropClosesModal && this.closeBackdrop, onTouchEnd: !!backdropClosesModal && this.closeBackdrop },
 				_react2['default'].createElement(
 					'div',
-					{ className: (0, _aphroditeNoImportant.css)(classes.content), style: { marginBottom: offsetThumbnails, maxWidth: width } },
-					_react2['default'].createElement(_componentsHeader2['default'], {
-						customControls: customControls,
-						onClose: onClose,
-						showCloseButton: showCloseButton,
-						closeButtonTitle: this.props.closeButtonTitle
-					}),
+					{ className: (0, _aphroditeNoImportant.css)(classes.content), style: {
+							marginBottom: offsetThumbnails,
+							maxWidth: width
+						} },
+					_react2['default'].createElement(_componentsHeader2['default'], { customControls: customControls, onClose: onClose, showCloseButton: showCloseButton, closeButtonTitle: this.props.closeButtonTitle }),
+					' ',
 					this.renderImages()
 				),
 				this.renderThumbnails(),
@@ -2956,40 +2937,31 @@ var Lightbox = (function (_Component) {
 			return _react2['default'].createElement(
 				'figure',
 				{ className: (0, _aphroditeNoImportant.css)(classes.figure) },
-				!image.video && _react2['default'].createElement('img', {
-					className: (0, _aphroditeNoImportant.css)(classes.image),
-					onClick: !!onClickImage && onClickImage,
-					sizes: sizes,
-					alt: image.alt,
-					src: image.src,
-					srcSet: srcset,
-					style: {
+				!image.video && _react2['default'].createElement('img', { className: (0, _aphroditeNoImportant.css)(classes.image), onClick: !!onClickImage && onClickImage, sizes: sizes, alt: image.alt, src: image.src, srcSet: srcset, style: {
 						cursor: this.props.onClickImage ? 'pointer' : 'auto',
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
-					}
-				}),
-				image.video && _react2['default'].createElement('video', {
-					className: (0, _aphroditeNoImportant.css)(classes.image),
-					onClick: !!onClickImage && onClickImage,
-					sizes: sizes,
-					alt: image.alt,
-					src: image.src,
-					srcSet: srcset,
-					style: {
-						cursor: this.props.onClickImage ? 'pointer' : 'auto',
-						maxHeight: 'calc(100vh - ' + heightOffset + ')'
+					} }),
+				image.video && _react2['default'].createElement(
+					'video',
+					{
+						className: (0, _aphroditeNoImportant.css)(classes.image),
+						onClick: !!onClickImage && onClickImage,
+						// sizes={sizes
+						// alt={image.alt
+						// src={image.src
+						// srcSet={srcset
+						style: {
+							cursor: this.props.onClickImage ? 'pointer' : 'auto',
+							maxHeight: 'calc(100vh - ' + heightOffset + ')'
+						},
+						autoPlay: true,
+						loop: true,
+						playsInline: true
 					},
-					type: 'video/webm',
-					autoPlay: true,
-					loop: true
-				}),
-				_react2['default'].createElement(_componentsFooter2['default'], {
-					caption: images[currentImage].caption,
-					countCurrent: currentImage + 1,
-					countSeparator: imageCountSeparator,
-					countTotal: images.length,
-					showCount: showImageCount
-				})
+					_react2['default'].createElement('source', { src: image.src, type: 'video/webm' }),
+					_react2['default'].createElement('source', { src: srcset, type: 'video/mp4' })
+				),
+				_react2['default'].createElement(_componentsFooter2['default'], { caption: images[currentImage].caption, countCurrent: currentImage + 1, countSeparator: imageCountSeparator, countTotal: images.length, showCount: showImageCount })
 			);
 		}
 	}, {
@@ -3004,12 +2976,7 @@ var Lightbox = (function (_Component) {
 
 			if (!showThumbnails) return;
 
-			return _react2['default'].createElement(_componentsPaginatedThumbnails2['default'], {
-				currentImage: currentImage,
-				images: images,
-				offset: thumbnailOffset,
-				onClickThumbnail: onClickThumbnail
-			});
+			return _react2['default'].createElement(_componentsPaginatedThumbnails2['default'], { currentImage: currentImage, images: images, offset: thumbnailOffset, onClickThumbnail: onClickThumbnail });
 		}
 	}, {
 		key: 'render',

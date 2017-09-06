@@ -17,17 +17,10 @@ class Lightbox extends Component {
 	constructor (props) {
 		super(props);
 		this.theme = deepMerge(defaultTheme, props.theme);
-		bindFunctions.call(this, [
-			'gotoNext',
-			'gotoPrev',
-			'closeBackdrop',
-			'handleKeyboardInput',
-		]);
+		bindFunctions.call(this, ['gotoNext', 'gotoPrev', 'closeBackdrop', 'handleKeyboardInput']);
 	}
 	getChildContext () {
-		return {
-			theme: this.theme,
-		};
+		return { theme: this.theme };
 	}
 	componentDidMount () {
 		if (this.props.isOpen && this.props.enableKeyboardInput) {
@@ -35,7 +28,8 @@ class Lightbox extends Component {
 		}
 	}
 	componentWillReceiveProps (nextProps) {
-		if (!canUseDom) return;
+		if (!canUseDom)
+			return;
 
 		// preload images
 		if (nextProps.preloadNextImage) {
@@ -80,13 +74,15 @@ class Lightbox extends Component {
 
 	preloadImage (idx) {
 		const image = this.props.images[idx];
-    																				const video = document.createElement('video');
-    // video.setAttribute('src', 'nameOfFile.webm');
+		const video = document.createElement('video');
+		// video.setAttribute('src', 'nameOfFile.webm');
 
+		if (!image)
+			return;
 
-		if (!image) return;
-
-		const img = (image.video ? video : new Image());
+		const img = (image.video
+			? video
+			: new Image());
 
 		img.src = image.src;
 		img.srcset = img.srcSet || img.srcset;
@@ -96,7 +92,8 @@ class Lightbox extends Component {
 		}
 	}
 	gotoNext (event) {
-		if (this.props.currentImage === (this.props.images.length - 1)) return;
+		if (this.props.currentImage === (this.props.images.length - 1))
+			return;
 		if (event) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -105,7 +102,8 @@ class Lightbox extends Component {
 
 	}
 	gotoPrev (event) {
-		if (this.props.currentImage === 0) return;
+		if (this.props.currentImage === 0)
+			return;
 		if (event) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -138,30 +136,16 @@ class Lightbox extends Component {
 	// ==============================
 
 	renderArrowPrev () {
-		if (this.props.currentImage === 0) return null;
+		if (this.props.currentImage === 0)
+			return null;
 
-		return (
-			<Arrow
-				direction="left"
-				icon="arrowLeft"
-				onClick={this.gotoPrev}
-				title={this.props.leftArrowTitle}
-				type="button"
-			/>
-		);
+		return (<Arrow direction="left" icon="arrowLeft" onClick={this.gotoPrev} title={this.props.leftArrowTitle} type="button"/>);
 	}
 	renderArrowNext () {
-		if (this.props.currentImage === (this.props.images.length - 1)) return null;
+		if (this.props.currentImage === (this.props.images.length - 1))
+			return null;
 
-		return (
-			<Arrow
-				direction="right"
-				icon="arrowRight"
-				onClick={this.gotoNext}
-				title={this.props.rightArrowTitle}
-				type="button"
-			/>
-		);
+		return (<Arrow direction="right" icon="arrowRight" onClick={this.gotoNext} title={this.props.rightArrowTitle} type="button"/>);
 	}
 	renderDialog () {
 		const {
@@ -174,7 +158,8 @@ class Lightbox extends Component {
 			width,
 		} = this.props;
 
-		if (!isOpen) return <span key="closed" />;
+		if (!isOpen)
+			return <span key="closed"/>;
 
 		let offsetThumbnails = 0;
 		if (showThumbnails) {
@@ -182,24 +167,17 @@ class Lightbox extends Component {
 		}
 
 		return (
-			<Container
-				key="open"
-				onClick={!!backdropClosesModal && this.closeBackdrop}
-				onTouchEnd={!!backdropClosesModal && this.closeBackdrop}
-			>
-				<div className={css(classes.content)} style={{ marginBottom: offsetThumbnails, maxWidth: width }}>
-					<Header
-						customControls={customControls}
-						onClose={onClose}
-						showCloseButton={showCloseButton}
-						closeButtonTitle={this.props.closeButtonTitle}
-					/>
-					{this.renderImages()}
+			<Container key="open" onClick={!!backdropClosesModal && this.closeBackdrop} onTouchEnd={!!backdropClosesModal && this.closeBackdrop}>
+				<div className={css(classes.content)} style={{
+					marginBottom: offsetThumbnails,
+					maxWidth: width,
+				}}>
+					<Header customControls={customControls} onClose={onClose} showCloseButton={showCloseButton} closeButtonTitle={this.props.closeButtonTitle}/> {this.renderImages()}
 				</div>
 				{this.renderThumbnails()}
 				{this.renderArrowPrev()}
 				{this.renderArrowNext()}
-				<ScrollLock />
+				<ScrollLock/>
 			</Container>
 		);
 	}
@@ -213,7 +191,8 @@ class Lightbox extends Component {
 			showThumbnails,
 		} = this.props;
 
-		if (!images || !images.length) return null;
+		if (!images || !images.length)
+			return null;
 
 		const image = images[currentImage];
 		image.srcset = image.srcSet || image.srcset;
@@ -226,9 +205,10 @@ class Lightbox extends Component {
 			sizes = '100vw';
 		}
 
-		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
-		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
-			+ (this.theme.container.gutter.vertical)}px`;
+		const thumbnailsSize = showThumbnails
+			? this.theme.thumbnail.size
+			: 0;
+		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize + (this.theme.container.gutter.vertical)}px`;
 
 		return (
 			<figure className={css(classes.figure)}>
@@ -237,60 +217,46 @@ class Lightbox extends Component {
 					https://fb.me/react-unknown-prop is resolved
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
 				*/}
-        {
-          !image.video &&
-          <img
+				{!image.video && <img className={css(classes.image)} onClick={!!onClickImage && onClickImage} sizes={sizes} alt={image.alt} src={image.src} srcSet={srcset} style={{
+					cursor: this.props.onClickImage
+            ? 'pointer'
+						: 'auto',
+					maxHeight: `calc(100vh - ${heightOffset})`,
+				}}/>}
+				{
+          image.video
+          && <video
 	className={css(classes.image)}
 	onClick={!!onClickImage && onClickImage}
-	sizes={sizes}
-	alt={image.alt}
-	src={image.src}
-	srcSet={srcset}
+            // sizes={sizes
+            // alt={image.alt
+            // src={image.src
+            // srcSet={srcset
 	style={{
-              																																																											cursor: this.props.onClickImage ? 'pointer' : 'auto',
-        																																																											maxHeight: `calc(100vh - ${heightOffset})`,
-            																													}}
-          />}
-        {
-          image.video &&
-          <video
-	className={css(classes.image)}
-	onClick={!!onClickImage && onClickImage}
-	sizes={sizes}
-	alt={image.alt}
-	src={image.src}
-	srcSet={srcset}
-	style={{
-              																																																											cursor: this.props.onClickImage ? 'pointer' : 'auto',
-        																																																											maxHeight: `calc(100vh - ${heightOffset})`,
-            																													}}
-	type="video/webm"
+              																			cursor: this.props.onClickImage
+                ? 'pointer'
+                : 'auto',
+		maxHeight: `calc(100vh - ${heightOffset})`,
+            									}}
 	autoPlay
 	loop
-          />}
-				<Footer
-					caption={images[currentImage].caption}
-					countCurrent={currentImage + 1}
-					countSeparator={imageCountSeparator}
-					countTotal={images.length}
-					showCount={showImageCount}
-				/>
+	playsInline
+             >
+            <source src={image.src} type="video/webm"/>
+            <source src={srcset} type="video/mp4"/>
+          </video>
+        }
+				<Footer caption={images[currentImage].caption} countCurrent={currentImage + 1} countSeparator={imageCountSeparator} countTotal={images.length} showCount={showImageCount}/>
 			</figure>
 		);
 	}
 	renderThumbnails () {
 		const { images, currentImage, onClickThumbnail, showThumbnails, thumbnailOffset } = this.props;
 
-		if (!showThumbnails) return;
+		if (!showThumbnails)
+			return;
 
-		return (
-			<PaginatedThumbnails
-				currentImage={currentImage}
-				images={images}
-				offset={thumbnailOffset}
-				onClickThumbnail={onClickThumbnail}
-			/>
-		);
+		return (<PaginatedThumbnails currentImage={currentImage} images={images} offset={thumbnailOffset} onClickThumbnail={onClickThumbnail}/>);
 	}
 	render () {
 		return (
@@ -308,15 +274,13 @@ Lightbox.propTypes = {
 	customControls: PropTypes.arrayOf(PropTypes.node),
 	enableKeyboardInput: PropTypes.bool,
 	imageCountSeparator: PropTypes.string,
-	images: PropTypes.arrayOf(
-		PropTypes.shape({
-			src: PropTypes.string.isRequired,
-			srcset: PropTypes.array,
-			caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-			thumbnail: PropTypes.string,
-      																																																																																										video: PropTypes.bool,
-		})
-	).isRequired,
+	images: PropTypes.arrayOf(PropTypes.shape({
+		src: PropTypes.string.isRequired,
+		srcset: PropTypes.array,
+		caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+		thumbnail: PropTypes.string,
+		video: PropTypes.bool,
+	})).isRequired,
 	isOpen: PropTypes.bool,
 	leftArrowTitle: PropTypes.string,
 	onClickImage: PropTypes.func,
@@ -330,7 +294,7 @@ Lightbox.propTypes = {
 	showThumbnails: PropTypes.bool,
 	theme: PropTypes.object,
 	thumbnailOffset: PropTypes.number,
-  																														video: PropTypes.bool,
+	video: PropTypes.bool,
 	width: PropTypes.number,
 };
 Lightbox.defaultProps = {
