@@ -224,7 +224,7 @@ class Lightbox extends Component {
 					maxHeight: `calc(100vh - ${heightOffset})`,
 				}}/>}
 
-				{
+				{/* {
 					<video
 						className={css(classes.image)}
 						onClick={!!onClickImage && onClickImage}
@@ -233,19 +233,19 @@ class Lightbox extends Component {
 						// src={image.src
 						// srcSet={srcset
 						style={{
-							cursor: this.props.onClickImage
-								? 'pointer'
-								: 'auto',
-							maxHeight: `calc(100vh - ${heightOffset})`,
+					cursor: this.props.onClickImage
+					? 'pointer'
+					: 'auto',
+					maxHeight: `calc(100vh - ${heightOffset})`,
 						}}
 						autoPlay
 						loop
 						playsInline
-						 >
+					>
 						<source src={image.src} type="video/webm"/>
 						<source src={srcset} type="video/mp4"/>
 					</video>
-				}
+				} */}
 				<Footer caption={images[currentImage].caption} countCurrent={currentImage + 1} countSeparator={imageCountSeparator} countTotal={images.length} showCount={showImageCount}/>
 			</figure>
 		);

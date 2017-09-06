@@ -2941,26 +2941,6 @@ var Lightbox = (function (_Component) {
 						cursor: this.props.onClickImage ? 'pointer' : 'auto',
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
 					} }),
-				_react2['default'].createElement(
-					'video',
-					{
-						className: (0, _aphroditeNoImportant.css)(classes.image),
-						onClick: !!onClickImage && onClickImage,
-						// sizes={sizes
-						// alt={image.alt
-						// src={image.src
-						// srcSet={srcset
-						style: {
-							cursor: this.props.onClickImage ? 'pointer' : 'auto',
-							maxHeight: 'calc(100vh - ' + heightOffset + ')'
-						},
-						autoPlay: true,
-						loop: true,
-						playsInline: true
-					},
-					_react2['default'].createElement('source', { src: image.src, type: 'video/webm' }),
-					_react2['default'].createElement('source', { src: srcset, type: 'video/mp4' })
-				),
 				_react2['default'].createElement(_componentsFooter2['default'], { caption: images[currentImage].caption, countCurrent: currentImage + 1, countSeparator: imageCountSeparator, countTotal: images.length, showCount: showImageCount })
 			);
 		}
@@ -3066,7 +3046,28 @@ module.exports = exports['default'];
 Re-implement when react warning "unknown props"
 https://fb.me/react-unknown-prop is resolved
 <Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
-*/
+*/ /* {
+   <video
+   	className={css(classes.image)}
+   	onClick={!!onClickImage && onClickImage}
+   	// sizes={sizes
+   	// alt={image.alt
+   	// src={image.src
+   	// srcSet={srcset
+   	style={{
+   cursor: this.props.onClickImage
+   ? 'pointer'
+   : 'auto',
+   maxHeight: `calc(100vh - ${heightOffset})`,
+   	}}
+   	autoPlay
+   	loop
+   	playsInline
+   >
+   	<source src={image.src} type="video/webm"/>
+   	<source src={srcset} type="video/mp4"/>
+   </video>
+   } */
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./components/Arrow":41,"./components/Container":42,"./components/Footer":43,"./components/Header":44,"./components/PaginatedThumbnails":46,"./components/Portal":48,"./theme":54,"./utils":58,"aphrodite/no-important":6,"prop-types":undefined,"react-scrolllock":undefined}],41:[function(require,module,exports){
