@@ -2937,11 +2937,11 @@ var Lightbox = (function (_Component) {
 			return _react2['default'].createElement(
 				'figure',
 				{ className: (0, _aphroditeNoImportant.css)(classes.figure) },
-				!image.video && _react2['default'].createElement('img', { className: (0, _aphroditeNoImportant.css)(classes.image), onClick: !!onClickImage && onClickImage, sizes: sizes, alt: image.alt, src: image.src, srcSet: srcset, style: {
+				_react2['default'].createElement('img', { className: (0, _aphroditeNoImportant.css)(classes.image), onClick: !!onClickImage && onClickImage, sizes: sizes, alt: image.alt, src: image.src, srcSet: srcset, style: {
 						cursor: this.props.onClickImage ? 'pointer' : 'auto',
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
 					} }),
-				image.video && _react2['default'].createElement(
+				_react2['default'].createElement(
 					'video',
 					{
 						className: (0, _aphroditeNoImportant.css)(classes.image),

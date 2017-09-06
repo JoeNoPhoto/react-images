@@ -217,35 +217,35 @@ class Lightbox extends Component {
 					https://fb.me/react-unknown-prop is resolved
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
 				*/}
-				{!image.video && <img className={css(classes.image)} onClick={!!onClickImage && onClickImage} sizes={sizes} alt={image.alt} src={image.src} srcSet={srcset} style={{
+				{<img className={css(classes.image)} onClick={!!onClickImage && onClickImage} sizes={sizes} alt={image.alt} src={image.src} srcSet={srcset} style={{
 					cursor: this.props.onClickImage
-            ? 'pointer'
+						? 'pointer'
 						: 'auto',
 					maxHeight: `calc(100vh - ${heightOffset})`,
 				}}/>}
+
 				{
-          image.video
-          && <video
-	className={css(classes.image)}
-	onClick={!!onClickImage && onClickImage}
-            // sizes={sizes
-            // alt={image.alt
-            // src={image.src
-            // srcSet={srcset
-	style={{
-              																			cursor: this.props.onClickImage
-                ? 'pointer'
-                : 'auto',
-		maxHeight: `calc(100vh - ${heightOffset})`,
-            									}}
-	autoPlay
-	loop
-	playsInline
-             >
-            <source src={image.src} type="video/webm"/>
-            <source src={srcset} type="video/mp4"/>
-          </video>
-        }
+					<video
+						className={css(classes.image)}
+						onClick={!!onClickImage && onClickImage}
+						// sizes={sizes
+						// alt={image.alt
+						// src={image.src
+						// srcSet={srcset
+						style={{
+							cursor: this.props.onClickImage
+								? 'pointer'
+								: 'auto',
+							maxHeight: `calc(100vh - ${heightOffset})`,
+						}}
+						autoPlay
+						loop
+						playsInline
+						 >
+						<source src={image.src} type="video/webm"/>
+						<source src={srcset} type="video/mp4"/>
+					</video>
+				}
 				<Footer caption={images[currentImage].caption} countCurrent={currentImage + 1} countSeparator={imageCountSeparator} countTotal={images.length} showCount={showImageCount}/>
 			</figure>
 		);
