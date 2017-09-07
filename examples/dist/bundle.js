@@ -2923,7 +2923,7 @@ var defaultStyles = {
 	footerCaption: {
 		flex: '1 1 0',
 		// textAlign: 'center',
-		whiteSpace: 'rec'
+		whiteSpace: 'pre'
 	}
 };
 
