@@ -319,6 +319,7 @@ Lightbox.childContextTypes = {
 const classes = StyleSheet.create({
 	content: {
 		position: 'relative',
+		width: '90%',
 	},
 	figure: {
 		margin: 0, // remove browser default

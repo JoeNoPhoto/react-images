@@ -4104,7 +4104,8 @@ Lightbox.childContextTypes = {
 
 var classes = _aphroditeNoImportant.StyleSheet.create({
 	content: {
-		position: 'relative'
+		position: 'relative',
+		width: '90%'
 	},
 	figure: {
 		margin: 0 },
