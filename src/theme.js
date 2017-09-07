@@ -30,10 +30,10 @@ theme.footer = {
 	color: '#ffe11f',
 	fontSize: '2rem',
 	count: {
-		color: 'rgba(255, 255, 31, 0.50)',
+		color: 'rgba(255, 255, 31, 0.p0)',
 		fontSize: '.85em',
 	},
-	height: 40,
+	// height: 40,
 	gutter: {
 		horizontal: 0,
 		vertical: 5,
