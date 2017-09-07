@@ -3625,7 +3625,7 @@ theme.close = {
 
 // footer
 theme.footer = {
-	fontFamily: 'Impact, Charcoal, sans-serif',
+	fontFamily: 'Cubano, Charcoal, sans-serif',
 	color: '#ffe11f',
 	fontSize: '2rem',
 	count: {
