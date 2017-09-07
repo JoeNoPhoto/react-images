@@ -327,7 +327,7 @@ const classes = StyleSheet.create({
 		display: 'block', // removes browser default gutter
 		height: 'auto',
 		margin: '0 auto', // maintain center on very short screens OR very narrow image
-		maxWidth: '600px',
+		maxWidth: '100%',
 
 		// disable user select
 		WebkitTouchCallout: 'none',
