@@ -277,7 +277,7 @@ Lightbox.propTypes = {
 	images: PropTypes.arrayOf(PropTypes.shape({
 		src: PropTypes.string.isRequired,
 		srcset: PropTypes.array,
-		caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+		caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.node]),
 		thumbnail: PropTypes.string,
 		video: PropTypes.bool,
 	})).isRequired,

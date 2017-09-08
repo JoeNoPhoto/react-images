@@ -4063,7 +4063,7 @@ Lightbox.propTypes = {
 	images: _propTypes2['default'].arrayOf(_propTypes2['default'].shape({
 		src: _propTypes2['default'].string.isRequired,
 		srcset: _propTypes2['default'].array,
-		caption: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element]),
+		caption: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element, _propTypes2['default'].node]),
 		thumbnail: _propTypes2['default'].string,
 		video: _propTypes2['default'].bool
 	})).isRequired,
