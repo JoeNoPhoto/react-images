@@ -2891,7 +2891,7 @@ function Footer(_ref, _ref2) {
 }
 
 Footer.propTypes = {
-	caption: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element]),
+	caption: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element, _propTypes2['default'].node]),
 	countCurrent: _propTypes2['default'].number,
 	countSeparator: _propTypes2['default'].string,
 	countTotal: _propTypes2['default'].number,
